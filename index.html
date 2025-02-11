@@ -523,15 +523,508 @@
             transform: translateY(-5px) scale(1.2);
             text-shadow: 15 15 15px var(--accent);
         }
+        .skill-progress {
+            margin-top: 1.5rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-item span {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            transition: width 1.5s ease-in-out;
+            animation: progressAnimation 1.5s ease-in-out;
+        }
+        
+        @keyframes progressAnimation {
+            from {
+                width: 0;
+            }
+        }
+        
+        .skill-card:hover .progress {
+            animation: progressPulse 2s infinite;
+        }
+        
+        @keyframes progressPulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        /* Enhance existing skill-card hover effect */
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(66, 133, 244, 0.2);
+            background: rgba(26, 26, 26, 0.95);
+        }
+        
+        /* Add this to your existing GSAP animations */
+        gsap.from('.progress', {
+            scrollTrigger: {
+                trigger: '#skills',
+                start: 'top center+=100',
+                toggleActions: 'play none none reverse'
+            },
+            width: 0,
+            duration: 1.5,
+            ease: 'power2.out',
+            stagger: 0.2
+        });
+        /* Enhanced root variables */
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent-blue: #4285f4;
+            --accent-green: #0F9D58;
+            --text-light: #ffffff;
+            --text-gray: #A2AAAD;
+            --gradient: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --hover-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Enhanced about section */
+        .about {
+            background: linear-gradient(to bottom, #000000, #001a13);
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(66, 133, 244, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(15, 157, 88, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text {
+            color: var(--text-light);
+        }
+
+        .lead {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        /* Enhanced stats section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: var(--hover-transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(66, 133, 244, 0.1);
+            border-color: var(--accent-blue);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Enhanced skill cards */
+        .skill-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            transition: var(--hover-transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(66, 133, 244, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        /* Enhanced progress bars */
+        .skill-progress {
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-item span {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            transition: width 1.5s ease-in-out;
+            position: relative;
+        }
+
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: progressShine 2s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Enhanced project cards */
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: var(--hover-transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(66, 133, 244, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        /* Enhanced tech tags */
+        .tech-tag {
+            background: rgba(66, 133, 244, 0.2);
+            border: 1px solid rgba(66, 133, 244, 0.3);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            transition: var(--hover-transition);
+        }
+
+        .tech-tag:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced timeline */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            transition: var(--hover-transition);
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(66, 133, 244, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            width: 0;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Enhanced social links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: var(--text-light);
+            font-size: 2rem;
+            transition: var(--hover-transition);
+            position: relative;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition: var(--hover-transition);
+        }
+
+        .social-link:hover {
+            color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .social-link:hover::before {
+            opacity: 0.1;
+            transform: scale(1.5);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline::before {
+                left: 0;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 2rem);
+                margin-left: 2rem !important;
+            }
+        }
+
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-content {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--accent-blue);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .page-transition-overlay {
+            position: fixed;
+            inset: 0;
+            transform-origin: top;
+            z-index: 9999;
+            background: var(--gradient);
+          }
+          
+          .section-container {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          
+          .section-container.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        /* Add these to your existing styles */
+        .about-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Add hover animations for stat items */
+        .stat-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(66, 133, 244, 0.2);
+        }
+
+        /* Add text reveal animation */
+        .reveal-text {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transform-origin: left;
+            animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        @keyframes revealText {
+            0% {
+                transform: scaleX(1);
+            }
+            100% {
+                transform: scaleX(0);
+            }
+        }
+
+        /* Add floating animation for image */
+        .image-wrapper {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="cursor"></div>
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+    <div class="loader">
+        <div class="loader-content"></div>
+    </div>
 
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">RCT</div>
             <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#experience" class="nav-link">Experience</a>
@@ -548,6 +1041,36 @@
             </div>
         </div>
     </section>
+    <section id="about" class="about">
+        <div class="section-content" data-aos="fade-up">
+            <h2 class="section-title reveal-text">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text about-content">
+                    <p class="lead reveal-text">Passionate Innovation Engineer specializing in AI and Machine Learning solutions.</p>
+                    <p class="reveal-text">With a strong foundation in both theoretical and practical aspects of AI, I strive to create innovative solutions that make a real-world impact. My expertise spans across machine learning, computer vision, and natural language processing.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item" style="animation-delay: 0.2s">
+                            <h3 class="stat-number">3+</h3>
+                            <p>Years Coding</p>
+                        </div>
+                        <div class="stat-item" style="animation-delay: 0.4s">
+                            <h3 class="stat-number">15+</h3>
+                            <p>Projects</p>
+                        </div>
+                        <div class="stat-item" style="animation-delay: 0.6s">
+                            <h3 class="stat-number">5+</h3>
+                            <p>AI Models</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="https://i.ibb.co/jkdQcdsv/N-L-RAM-CHARAN-TEJA.jpg" alt="profile">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="skills">
         <h2 class="section-title">Technical Expertise</h2>
@@ -555,18 +1078,74 @@
             <div class="skill-card">
                 <h3>Development</h3>
                 <p>Python, Java, HTML, CSS, JavaScript</p>
+                <div class="skill-progress">
+                    <div class="skill-item">
+                        <span>Python</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Java</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="skill-card">
                 <h3>AI & ML</h3>
-                <p>Django, Numpy, Pandas, Tensorflow, Keras</p>
+                <p>TensorFlow, PyTorch, Scikit-learn, Deep Learning, Computer Vision, NLP</p>
+                <div class="skill-progress">
+                    <div class="skill-item">
+                        <span>Machine Learning</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Deep Learning</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="skill-card">
-                <h3>Database Management</h3>
-                <p>SQL, NoSQL, Database Design</p>
+                <h3>Database & Cloud</h3>
+                <p>SQL, MongoDB, AWS, Azure, Docker, Kubernetes</p>
+                <div class="skill-progress">
+                    <div class="skill-item">
+                        <span>Database Management</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Cloud Services</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="skill-card">
                 <h3>Tools & Technologies</h3>
-                <p>Git, VS Code, Jupyter, Cloud Platforms</p>
+                <p>Git, CI/CD, RESTful APIs, Microservices, System Design</p>
+                <div class="skill-progress">
+                    <div class="skill-item">
+                        <span>DevOps</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>System Architecture</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -660,6 +1239,57 @@
 
     <script>
         // Custom cursor
+        // Professional page transitions
+        const pageTransitions = () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const createOverlay = () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'page-transition-overlay';
+            document.body.appendChild(overlay);
+            return overlay;
+            };
+        
+            const animatePageTransition = async (targetSection) => {
+            const overlay = createOverlay();
+            
+            // Animate overlay in
+            await gsap.to(overlay, {
+                scaleY: 1,
+                duration: 0.8,
+                ease: 'power4.inOut'
+            });
+            
+            // Hide all sections except target
+            sections.forEach(section => {
+                section.style.display = 'none';
+                if (section.id === targetSection) {
+                section.style.display = 'block';
+                }
+            });
+            
+            // Animate overlay out
+            await gsap.to(overlay, {
+                scaleY: 0,
+                duration: 0.8,
+                ease: 'power4.inOut',
+                transformOrigin: 'bottom'
+            });
+            
+            overlay.remove();
+            };
+        
+            navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = e.target.getAttribute('href').substring(1);
+                animatePageTransition(targetSection);
+            });
+            });
+        };
+        
+        pageTransitions();
         
         document.querySelectorAll('section').forEach(section => {
             if (!section.classList.contains('hero')) {
@@ -706,6 +1336,25 @@
             } else {
                 nav.classList.remove('scrolled');
             }
+        });
+        // Handle scroll progress bar
+        const progressBar = document.querySelector('.scroll-progress-bar');
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + "%";
+        });
+
+        // Handle loader
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
         });
 
         // GSAP Animations
@@ -799,6 +1448,69 @@
                 `;
                 section.insertBefore(background, section.firstChild);
             }
+        });
+        // Add these to your existing GSAP animations
+        gsap.from('.about-content', {
+            scrollTrigger: {
+                trigger: '#about',
+                start: 'top center+=100',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out'
+        });
+
+        // Animate statistics when they come into view
+        gsap.from('.stat-number', {
+            scrollTrigger: {
+                trigger: '.stats-grid',
+                start: 'top center+=100'
+            },
+            textContent: 0,
+            duration: 2,
+            ease: 'power1.inOut',
+            snap: { textContent: 1 },
+            stagger: 0.2,
+            // Update number with plus sign
+            onUpdate: function(self) {
+                const target = self.targets()[0];
+                if(target.textContent !== '0') {
+                    target.textContent = Math.ceil(self.targets()[0].textContent) + '+';
+                }
+            }
+        });
+
+        // Add parallax effect to about image
+        gsap.to('.image-wrapper', {
+            scrollTrigger: {
+                trigger: '#about',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            },
+            y: 100,
+            ease: 'none'
+        });
+
+        // Add hover effect for stat items
+        document.querySelectorAll('.stat-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                gsap.to(item, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                gsap.to(item, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
         });
     </script>
 </body>
